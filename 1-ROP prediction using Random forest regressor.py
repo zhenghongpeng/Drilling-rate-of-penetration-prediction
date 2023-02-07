@@ -1,9 +1,15 @@
 #Import data analysis python libraries
-Import numpy as np
+import numpy as np
 import pandas as pd 
 import matplotlib.pyplot as plt
-import seaborn as sns 
-%matplotlib inline
+import seaborn as sns
+from sklearn.ensemble import RandomForestRegressor 
+from sklearn.svm import SVR
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error,r2_score,mean_absolute_error
+from sklearn.model_selection import RandomizedSearchCV, GridSearchCV
+from sklearn.preprocessing import MinMaxScaler
+#matplotlib inline
 
 # import drilling data 
 welldf=pd.read_csv('Well_58-32.csv')
@@ -65,6 +71,7 @@ print('Y dimension is :',y.shape)
 print('X  dimension is :',X.shape)
 X_train, X_test, y_train, y_test = train_test_split(X, y,test_size=0.3)
 #random try of random forest on the training set
+rfran=RandomForestRegressor()
 rfran.fit(X_train,y_train)
 predict=rfran.predict(X_test)
 mse=mean_squared_error(y_test,predict)
