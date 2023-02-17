@@ -127,9 +127,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
+.DS_Store
 # Temp folder
 temp/
+.idea/
 notebooks/files/
 
 config.yaml
+
+
